@@ -21,11 +21,4 @@ rad.json
 #Test results file
 TestResults.xml
 
-# Ignore Cypress configuration and data files
-cypress/videos/
-cypress/screenshots/
-cypress/fixtures/
-cypress/results/
-cypress/reports/
-cypress.json
-cypress.config.js
+node_modules
