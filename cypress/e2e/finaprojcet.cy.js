@@ -14,4 +14,7 @@ describe('Open TestZootopia Website', () => {
     it('should log in, change password, and close the popup', () => {
         cy.changePasswordAndClosePopup();
     });
+    it('should search and cart item', () => {
+        cy.searchAndCart();
+    });
 });

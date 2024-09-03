@@ -98,3 +98,29 @@ Cypress.Commands.add('changePasswordAndClosePopup', () => {
     cy.get('.common > .xform').should('be.visible').click();
   });
 });
+
+Cypress.Commands.add('searchAndCart', () => {
+  cy.fixture('user.json').then((loginData) => {
+    cy.visitTestZootopia();
+    cy.login(loginData.email, loginData.password);
+    cy.get('.isearch').click();
+    cy.get('.srch2-inp').type('dog');
+    cy.get('.srch2-ul').find('li').eq(1).click();
+    cy.get('.add-pro ').click();
+    cy.get('a.icart p').click();
+    cy.get('.cart-list').children().should('have.length', 1);
+    cy.get('.plus.change-qty-by-one').clickMultipleTimes(10);
+    cy.get('.minus.change-qty-by-one').clickMultipleTimes(10);
+    cy.get('.clear').click();
+    cy.get('.logo').click();
+
+  });
+});
+Cypress.Commands.add('clickMultipleTimes', { prevSubject: 'element' }, (subject, times, delay) => {
+  for (let i = 0; i < times; i++) {
+    cy.wrap(subject).click();
+    if (i < times - 1) {
+      cy.wait(200); 
+    }
+  }
+});
